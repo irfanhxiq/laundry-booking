@@ -132,27 +132,29 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("errorMessage").style.display = "none";
 
             // --- Keep one window open ---
-            if (!bookingWindow || bookingWindow.closed) {
-                bookingWindow = window.open("", "_blank", "width=600,height=400");
-                bookingWindow.document.write("<h2>Booking Timetable</h2>");
-                bookingWindow.document.write("<table border='1' id='timetable'><thead><tr><th>Queue Number</th><th>Student Name</th><th>College</th><th>Booking Time</th><th>End Time</th><th>Service</th><th>Machine</th><th>Total Cost</th></tr></thead><tbody></tbody></table>");
-                bookingWindow.document.close();
-            }
+            setTimeout(() => {
+                if (!bookingWindow || bookingWindow.closed) {
+                    bookingWindow = window.open("", "_blank", "width=600,height=400");
+                    bookingWindow.document.write("<h2>Booking Timetable</h2>");
+                    bookingWindow.document.write("<table border='1' id='timetable'><thead><tr><th>Queue Number</th><th>Student Name</th><th>College</th><th>Booking Time</th><th>End Time</th><th>Service</th><th>Machine</th><th>Total Cost</th></tr></thead><tbody></tbody></table>");
+                    bookingWindow.document.close();
+                }
 
-            // Append new row into existing table
-            const timetableBody = bookingWindow.document.querySelector("#timetable tbody");
-            const row = bookingWindow.document.createElement("tr");
-            row.innerHTML = `
-                <td>${queue}</td>
-                <td>${name}</td>
-                <td>${college}</td>
-                <td>${startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</td>
-                <td>${endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</td>
-                <td>${service.charAt(0).toUpperCase() + service.slice(1)}</td>
-                <td>${service === "both" ? `${washer}, ${dryer}` : (service === "washer" ? washer : dryer)}</td>
-                <td>RM ${totalCost}</td>
-            `;
-            timetableBody.appendChild(row);
+                // Append new row into existing table
+                const timetableBody = bookingWindow.document.querySelector("#timetable tbody");
+                const row = bookingWindow.document.createElement("tr");
+                row.innerHTML = `
+                    <td>${queue}</td>
+                    <td>${name}</td>
+                    <td>${college}</td>
+                    <td>${startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</td>
+                    <td>${endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</td>
+                    <td>${service.charAt(0).toUpperCase() + service.slice(1)}</td>
+                    <td>${service === "both" ? `${washer}, ${dryer}` : (service === "washer" ? washer : dryer)}</td>
+                    <td>RM ${totalCost}</td>
+                `;
+                timetableBody.appendChild(row);
+            }, 300);  // Adding delay for mobile devices
 
             // Fade out popup
             popup.style.transition = "opacity 0.5s ease";
