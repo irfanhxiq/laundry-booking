@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laundry Booking System</title>
+    <link rel="stylesheet" href="laundrywebsite.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Poppins, sans-serif;
+            background-image: url('images/laundrybg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Landing Page Animation */
+        .landing-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .hero {
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            opacity: 0; /* Start as invisible */
+            transform: translateY(-50px) scale(0.8); /* Starts off-screen, slightly smaller */
+            animation: slideZoom 1.5s ease-out forwards; /* Apply the animation */
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        @keyframes slideZoom {
+            0% {
+                transform: translateY(-50px) scale(0.8);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0) scale(1); /* Final position */
+                opacity: 1; /* Fully visible */
+            }
+        }
+
+        /* Button Animation */
+        .btn-primary {
+            padding: 20px 40px;
+            background-color: #e91e63;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #c2185b;
+            transform: scale(1.1); /* Button enlarges slightly */
+        }
+
+        .btn-primary:active {
+            transform: scale(1.05); /* Button click effect */
+        }
+
+        /* Alert Message Animation */
+        .alert-message-container {
+            background-color: red;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.0em; /* Adjusted font size */
+            padding: 5px 0;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 9999;
+        }
+
+        .alert-message {
+            display: inline-block;
+            white-space: nowrap; /* Prevents text from wrapping to the next line */
+            animation: slideMessage 10s linear infinite;
+        }
+
+        @keyframes slideMessage {
+            0% {
+                transform: translateX(100%);
+            }
+            50% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* Booking Form Styles */
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        input[type="text"], input[type="time"], select, input[type="number"] {
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 1.1em;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #queueInfo {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        #queueNumber {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            text-align: left;
+            display: none; /* Initially hidden */
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        #errorMessage {
+            margin-top: 20px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        /* Initially hide the booking form */
+        .hidden {
+            display: none; /* This hides the form by default */
+        }
+
+        /* Popup Styles */
+        #confirmationPopup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden; /* Initially hidden */
+        }
+
+        .popup-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        button#confirmBtn {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        button#confirmBtn:hover {
+            background-color: #45a049;
+        }
+
+        button#cancelBtn {
+            background-color: #f44336;
+            color: white;
+        }
+
+        button#cancelBtn:hover {
+            background-color: #e53935;
+        }
+    </style>
+</head>
+<body>
+    <!-- Landing Page (Visible initially) -->
+<div id="landingPage" class="landing-container">
+    <div class="hero">
+        <h1>
+            Welcome To<br> <!-- Line break here -->
+            <span>Laundry Kolej ZB</span><br> <!-- Line break for "Laundry" -->
+        </h1>
+        <p>Your Laundry, Our Priority.</p>
+        <button id="bookNowBtn" class="btn-primary">START BOOK</button>
+    </div>
+</div>
+
+    <!-- Alert Message -->
+    <div class="alert-message-container">
+        <div class="alert-message">
+            Our machines will not operate from 12:00 AM – 7:00 AM. Please plan your laundry accordingly. Thank you!
+        </div>
+    </div>
+
+    <!-- Booking Form (Initially Hidden) -->
+    <div id="bookingFormContainer" class="hidden">
+        <div class="container">
+            <h1>Laundry ZB Booking System</h1>
+
+            <!-- Booking Form -->
+            <form id="bookingForm">
+                <label for="college">Choose College:</label>
+                <select id="college" name="college" required>
+                    <option value="Kolej Zamrud">Kolej Zamrud</option>
+                    <option value="Kolej Baiduri 1">Kolej Baiduri 1</option>
+                    <option value="Kolej Baiduri 2">Kolej Baiduri 2</option>
+                </select>
+
+                <label for="name">Student Name:</label>
+                <input type="text" id="name" name="name" required placeholder="Enter your name">
+                
+                <label for="time">Booking Time:</label>
+                <input type="time" id="time" name="time" required>
+                
+                <label for="service">Select Service:</label>
+                <select id="service" name="service" required>
+                    <option value="washer">Washer Only (1 hour)</option>
+                    <option value="dryer">Dryer Only (1 hour)</option>
+                    <option value="both">Washer & Dryer (2 hours)</option>
+                </select>
+
+                <!-- Washer and Dryer Dropdowns (Only visible when service is "both") -->
+                <div id="washerDropdown" class="hidden">
+                    <label for="washer">Choose Washer:</label>
+                    <select id="washer" name="washer" required>
+                        <!-- Washer options will be dynamically loaded -->
+                    </select>
+                </div>
+
+                <div id="dryerDropdown" class="hidden">
+                    <label for="dryer">Choose Dryer:</label>
+                    <select id="dryer" name="dryer" required>
+                        <!-- Dryer options will be dynamically loaded -->
+                    </select>
+                </div>
+
+                <label for="additionalHours">Additional Hours (Optional):</label>
+                <input type="number" id="additionalHours" name="additionalHours" min="0" value="0">
+
+                <button type="submit">Book Now</button>
+            </form>
+
+            <!-- Error message -->
+            <div id="errorMessage" style="color: red; display: none;">The selected time is unavailable. Please choose a different time.</div>
+        </div>
+    </div>
+
+    <!-- Confirmation Popup (Initially Hidden) -->
+    <div id="confirmationPopup" class="hidden">
+        <div class="popup-content">
+            <h2>Confirm Your Booking</h2>
+            <p><strong>Booking Time:</strong> <span id="confirmTime"></span></p>
+            <p><strong>Service:</strong> <span id="confirmService"></span></p>
+            <p><strong>Machine:</strong> <span id="confirmMachine"></span></p>
+            <p><strong>Total Cost:</strong> RM <span id="confirmCost"></span></p>
+            <div>
+                <button id="confirmBtn">CONFIRM</button>
+                <button id="cancelBtn">CANCEL</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Timetable (Initially Hidden) -->
+    <table id="bookingTable">
+        <thead>
+            <tr>
+                <th>Queue Number</th>
+                <th>Student Name</th>
+                <th>College</th>
+                <th>Booking Time</th>
+                <th>End Time</th>
+                <th>Service</th>
+                <th>Machine</th>
+                <th>Total Cost</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- New bookings will appear here -->
+        </tbody>
+    </table>
+
+    <script src="laundrywebsite.js"></script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+/* General Styles */
+body {
+    font-family: Poppins, sans-serif;
+    background-image: url('images/laundrybg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+}
+
+/* Landing Page Animation */
+.landing-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.hero {
+    text-align: center;
+    color: rgb(0, 0, 0);
+}
+
+.hero h1 {
+    font-family: 'Super Chiby', sans-serif;
+    font-size: 5em;
+    font-weight: 1000;
+    margin-bottom: 20px;
+    opacity: 0; /* Start as invisible */
+    overflow: hidden; /* Hides text that is not yet typed */
+    white-space: nowrap; /* Prevents text from wrapping to the next line */
+    display: inline-block; /* Ensure the text behaves as inline */
+    line-height: 1.2em; /* Space between lines */
+    animation: typing 4s steps(3) 1s 1 normal both, blink 0.75s step-end infinite; /* Typing effect and cursor blink */
+}
+
+/* Typing effect for vertical typing */
+@keyframes typing {
+    0% {
+        opacity: 1;
+        transform: translateY(-100%); /* Start from top */
+    }
+    25% {
+        opacity: 1;
+        transform: translateY(0); /* Move to its normal position */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Keep the text in place */
+    }
+}
+
+/* Cursor blink effect */
+@keyframes blink {
+    50% {
+        border-color: transparent; /* Cursor blink effect */
+    }
+}
+
+.hero h1 span {
+    display: block; /* Make each word a block element */
+    opacity: 0; /* Start invisible */
+    animation: wordTyping 2s ease-out forwards;
+}
+
+/* Animation for each word */
+@keyframes wordTyping {
+    0% {
+        opacity: 0;
+        transform: translateY(50px); /* Start below */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Move into position */
+    }
+}
+
+/* Adjust the spacing for words */
+.hero h1 span:nth-child(1) {
+    animation-delay: 0s; /* "Welcome" */
+}
+
+.hero h1 span:nth-child(2) {
+    animation-delay: 1s; /* "To" */
+}
+
+.hero h1 span:nth-child(3) {
+    animation-delay: 2s; /* "Laundry" */
+}
+
+.hero h1 span:nth-child(4) {
+    animation-delay: 3s; /* "Kolej ZB" */
+}
+
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+@keyframes slideZoom {
+    0% {
+        transform: translateY(-50px) scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0) scale(1); /* Final position */
+        opacity: 1; /* Fully visible */
+    }
+}
+
+/* Button Animation */
+.btn-primary {
+    padding: 20px 40px;
+    background-color: #0061bc;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #122367;
+    transform: scale(1.1); /* Button enlarges slightly */
+}
+
+.btn-primary:active {
+    transform: scale(1.05); /* Button click effect */
+}
+
+/* Booking Form Styles */
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Additional Styles... */
