@@ -35,6 +35,7 @@ body {
     animation: typing 4s steps(3) 1s 1 normal both, blink 0.75s step-end infinite; /* Typing effect and cursor blink */
 }
 
+
 /* Typing effect for vertical typing */
 @keyframes typing {
     0% {
@@ -143,3 +144,4 @@ body {
 }
 
 /* Additional Styles... */
+
