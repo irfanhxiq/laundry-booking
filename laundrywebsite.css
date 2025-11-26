@@ -9,10 +9,9 @@ body {
     padding: 0;
 }
 
-/* Add custom font */
 @font-face {
     font-family: 'Super Chiby';
-    src: url('font/Super%20Chiby.ttf') format('truetype');
+    src: url('https://raw.githubusercontent.com/irfanhxiq/laundry-booking/main/font/Super%20Chiby.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -168,3 +167,4 @@ body {
         max-width: 90%; /* Booking form adjusts for mobile */
     }
 }
+
