@@ -9,8 +9,8 @@ body {
     padding: 0;
 }
 @font-face {
-    font-family: 'Super Chiby';
-    src: url('https://raw.githubusercontent.com/irfanhxiq/laundry-booking/main/font/Super%20Chiby.ttf') format('truetype');
+    font-family: 'Super-Chiby';
+    src: url('https://raw.githubusercontent.com/irfanhxiq/laundry-booking/main/font/Super-Chiby.ttf') format('truetype');
     src: url('https://raw.githubusercontent.com/irfanhxiq/laundry-booking/main/font/Super-Chiby.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
@@ -31,7 +31,7 @@ body {
 }
 
 .hero h1 {
-    font-family: 'Super Chiby', sans-serif;
+    font-family: 'Super-Chiby', sans-serif;
     font-size: 5em;
     font-weight: 1000;
     margin-bottom: 20px;
@@ -151,4 +151,5 @@ body {
 }
 
 /* Additional Styles... */
+
 
