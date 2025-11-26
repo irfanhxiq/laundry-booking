@@ -9,6 +9,14 @@ body {
     padding: 0;
 }
 
+/* Add custom font */
+@font-face {
+    font-family: 'Super Chiby';
+    src: url('font/Super%20Chiby.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* Landing Page Animation */
 .landing-container {
     display: flex;
@@ -34,7 +42,6 @@ body {
     line-height: 1.2em; /* Space between lines */
     animation: typing 4s steps(3) 1s 1 normal both, blink 0.75s step-end infinite; /* Typing effect and cursor blink */
 }
-
 
 /* Typing effect for vertical typing */
 @keyframes typing {
@@ -94,7 +101,6 @@ body {
     animation-delay: 3s; /* "Kolej ZB" */
 }
 
-
 .hero p {
     font-size: 1.2em;
     margin-bottom: 30px;
@@ -143,6 +149,22 @@ body {
     border-radius: 8px;
 }
 
-/* Additional Styles... */
+/* Mobile Optimization */
+@media only screen and (max-width: 768px) {
+    .hero h1 {
+        font-size: 3.5em; /* Smaller font size for mobile */
+    }
 
+    .hero p {
+        font-size: 1em; /* Adjust paragraph size */
+    }
 
+    .btn-primary {
+        padding: 15px 30px; /* Adjust button size */
+        font-size: 1em;
+    }
+
+    .container {
+        max-width: 90%; /* Booking form adjusts for mobile */
+    }
+}
