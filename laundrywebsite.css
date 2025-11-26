@@ -10,8 +10,8 @@ body {
 }
 
 @font-face {
-    font-family: 'Super Chiby';
-    src: url('font/Super Chibby.ttf');
+    font-family: 'Super-Chiby';
+    src: url('font/Super-Chiby.ttf');
     font-weight: normal;
     font-style: normal;
 }
@@ -30,7 +30,7 @@ body {
 }
 
 .hero h1 {
-    font-family: 'Super Chiby', sans-serif;
+    font-family: 'Super-Chiby', sans-serif;
     font-size: 5em;
     font-weight: 1000;
     margin-bottom: 20px;
@@ -167,5 +167,6 @@ body {
         max-width: 90%; /* Booking form adjusts for mobile */
     }
 }
+
 
 
