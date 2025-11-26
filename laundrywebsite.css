@@ -9,15 +9,6 @@ body {
     padding: 0;
 }
 
-/* Add custom font */
-@font-face {
-    font-family: 'Super Chiby';
-    src: url('https://raw.githubusercontent.com/irfanhxiq/laundry-booking/main/font/Super-Chiby.ttf') format('truetype');
-    font-weight: normal;
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;  /* Helps with font rendering on slower connections */
-}
 /* Landing Page Animation */
 .landing-container {
     display: flex;
@@ -32,7 +23,7 @@ body {
 }
 
 .hero h1 {
-    font-family: 'Super-Chiby', sans-serif;
+    font-family: 'Super Chiby', sans-serif;
     font-size: 5em;
     font-weight: 1000;
     margin-bottom: 20px;
@@ -102,6 +93,7 @@ body {
     animation-delay: 3s; /* "Kolej ZB" */
 }
 
+
 .hero p {
     font-size: 1.2em;
     margin-bottom: 30px;
@@ -150,31 +142,4 @@ body {
     border-radius: 8px;
 }
 
-/* Mobile Optimization */
-@media only screen and (max-width: 768px) {
-    .hero h1 {
-        font-size: 3.5em; /* Smaller font size for mobile */
-    }
-
-    .hero p {
-        font-size: 1em; /* Adjust paragraph size */
-    }
-
-    .btn-primary {
-        padding: 15px 30px; /* Adjust button size */
-        font-size: 1em;
-    }
-
-    .container {
-        max-width: 90%; /* Booking form adjusts for mobile */
-    }
-}
-
-
-
-
-
-
-
-
-
+/* Additional Styles... */
