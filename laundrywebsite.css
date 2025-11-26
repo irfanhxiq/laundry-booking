@@ -11,7 +11,7 @@ body {
 
 @font-face {
     font-family: 'Super Chiby';
-    src: url('https://raw.githubusercontent.com/irfanhxiq/laundry-booking/main/font/Super%20Chiby.ttf') format('truetype');
+    src: url('font/Super Chibby.ttf');
     font-weight: normal;
     font-style: normal;
 }
@@ -167,4 +167,5 @@ body {
         max-width: 90%; /* Booking form adjusts for mobile */
     }
 }
+
 
